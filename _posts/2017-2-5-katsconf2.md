@@ -12,4 +12,4 @@ At Nitro, our main software Nitro PDF, generates billions of user events. In fac
 
 ## Technology stack 
 ## Serverless Framework 
-## Conclusion 
+## Conclusion
