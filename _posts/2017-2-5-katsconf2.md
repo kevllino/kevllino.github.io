@@ -32,11 +32,11 @@ In this post, we conly cover the non-grey component of the follwoing infrastruct
 
 In order to sessionize events, there are straightforward main steps to follow: 
 
-1.Ingest the events in the pipeline
+1. Ingest the events in the pipeline
 
-2.Filter our invalid events and process valid events
+2. Filter our invalid events and process valid events. In this context, the processing includes a technical cleaning (fixing some erroneous value fields for some builds) and enriching the event schema, e.g. by deriving a timestamp into date and creating new features from existing ones. 
 
-3.Create the sessions by tagging events with a uuid
+3. Create the sessions by tagging events with a uuid
 
 ### AWS for implementation 
 
