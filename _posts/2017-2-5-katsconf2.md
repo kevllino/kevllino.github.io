@@ -24,9 +24,17 @@ Hence, the goal was to build sessions out of those events. This data engineering
 
 ## Technology stack 
 
-Overview of the pipeline 
+### Overview of the pipeline 
+
+In this post, we conly cover the non-grey component of the follwoing infrastructure: 
 
 ![Overview of the pipeline]({{site.baseurl}}https://github.com/kevllino/kevllino.github.io/blob/master/images/Screen%20Shot%202017-02-05%20at%2012.24.38.png?raw=true)
+
+In order to sessionize events, there are straightforward main steps to follow: 
+
+1.Ingest the events in the pipeline
+2.Filter our invalid events and process valid events
+3.Create the sessions by tagging events with a uuid
 
 - AWS for implementation 
 - why Reactive? 
