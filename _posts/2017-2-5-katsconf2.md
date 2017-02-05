@@ -25,6 +25,7 @@ Hence, the goal was to build sessions out of those events. This data engineering
 ## Technology stack 
 
 Overview of the pipeline 
+
 ![Overview of the pipeline]({{site.baseurl}}https://github.com/kevllino/kevllino.github.io/blob/master/images/Screen%20Shot%202017-02-05%20at%2012.24.38.png?raw=true)
 
 - AWS for implementation 
