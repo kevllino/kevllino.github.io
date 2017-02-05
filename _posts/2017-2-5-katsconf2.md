@@ -40,6 +40,12 @@ In order to sessionize events, there are straightforward main steps to follow:
 
 ### AWS for implementation 
 
+In order to implement the business logic of those steps, we used AWS Lambda in Python. Lambda is great in that, you don't have to manage the back-end og your applicaiton and you only pay for the compute time, i.e. every time your Lambda code gets triggered by external events such as events coming from a stream.(https://aws.amazon.com/lambda/faqs/). Besides using Lambda for processing events, it also serves as a bridge to connect different pipeline components. In fact to transfer data coming from a Kinesis Stream to an S3 bucket, one needs a lambda to connect them. 
+
+![Generic Lambda]({{site.baseurl}}/https://github.com/kevllino/kevllino.github.io/blob/master/images/Screen%20Shot%202017-02-05%20at%2012.46.00.png?raw=true)
+
+The above defines a generic Lambda which will retrieve data triggered by a Kinesis Stream and post it into a Firehose which will deliver the data to the desired S3 bucket.
+
 ### why Reactive? 
 
 ## Serverless Framework 
