@@ -24,7 +24,9 @@ Hence, the goal was to build sessions out of those events. This data engineering
 
 ## Technology stack 
 
-- overview of the pipeline 
+Overview of the pipeline 
+![Overview of the pipeline]({{site.baseurl}}/https://github.com/kevllino/kevllino.github.io/blob/master/images/streaming-sessionization%20-%20Page%201.jpeg?raw=true)
+
 - AWS for implementation 
 - why Reactive? 
 
