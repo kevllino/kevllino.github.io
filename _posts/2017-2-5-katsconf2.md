@@ -14,7 +14,10 @@ At Nitro, our main software Nitro PDF, generates billions of user events. In fac
 And to that I will answer: 
 > Data alone is not relevant, we in fact, need to trasnform, manipulate it to be able to do something relevant with it!
 
-Hence, the goal was to build sessions out of those events. This data engineering project is the basis to any future Machine Learning task on customer behaviour. Knowing how the user makes use of our software will drive predictive user behavior and will allow us to improve user experience. 
+Hence, the goal was to build sessions out of those events. This data engineering project is the basis to any future Machine Learning task on customer behaviour. Knowing how the user makes use of our software will drive predictive user behavior and will allow us to improve user experience. FIY a session in our context is defined as: 
+-unique per machine 
+-a session can be created by timeout given a specific threshold between 2 consecutive events. 
+-a session can be created by an opening event
 
 ## Technology stack 
 ## Serverless Framework 
