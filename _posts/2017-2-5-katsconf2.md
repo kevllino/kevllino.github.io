@@ -53,7 +53,6 @@ As a matter of fact, all of the above are ensured thanks to the AWS components: 
 
 ## Serverless Framework 
 
-### What is this!
 
 Now for those who are new to the Lambda service, if you start using it, you'll end up having to code in the console like this: 
 
@@ -83,5 +82,8 @@ sls invoke -f hello -t Event
 # get the CloudWatch logs 
 sls logs -f hello
 ```
+
+Now the question that everyone will ask is: "_Why is it called serverless? Does it mean that there's no servers at all?!_". No there're still some servers somewhere, serverless refers to serverless computing which means that you don't need to provision and maintain servers, as AWS or IBM OpenWhisk does it for you. You just need to foccus on the code, it's all you get to do.
+
 
 ## Conclusion
