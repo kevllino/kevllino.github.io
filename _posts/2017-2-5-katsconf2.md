@@ -53,7 +53,35 @@ As a matter of fact, all of the above are ensured thanks to the AWS components: 
 
 ## Serverless Framework 
 
-- convenience 
-- structure 
+### What is this!
+
+Now for those who are new to the Lambda service, if you start using it, you'll end up having to code in the console like this: 
+
+![Lambda Console]({{site.baseurl}}/https://github.com/kevllino/kevllino.github.io/blob/master/images/Screen%20Shot%202017-02-06%20at%2021.24.34.png?raw=true)
+
+"Aouch!" Yes there's no code completion or checking and imagine yourself having to implement and maintain many Lambda functions. This is just not viable. Thus, [Serverless framework](https://serverless.com/), an open-source web framework written in Node.js was developped to support the development and deployment of applications using AWS lambda. This framework helps managing the lifecycle of your serverless architecture (build, deploy, update, delete) by safely deploying functions, events and their required resources together via provider resource managers (e.g., AWS CloudFormation). Here are some useful commands to get started writing your own serverless services: 
+
+```
+# serverless installation 
+npm install serverless -g
+
+# service creation 
+sls create -t aws-python -p ./myService
+
+# deploy the service 
+sls deploy
+
+# deploy one function 
+sls deploy function -f function1 
+
+# invoke a function against sample data 
+sls invoke -f function1 -p event.json
+
+#  invoke a function triggered by an event from a Kinesis Stream for example 
+sls invoke -f hello -t Event
+
+# get the CloudWatch logs 
+sls logs -f hello
+```
 
 ## Conclusion
