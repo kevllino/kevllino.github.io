@@ -46,7 +46,14 @@ In order to implement the business logic of those steps, we used **AWS Lambda** 
 
 The above defines a generic Lambda which will retrieve data triggered by a Kinesis Stream and post it into a Firehose which will deliver the data to the desired S3 bucket.
 
-### why Reactive? 
+### Why Reactive?
+
+To establish a reactive data pipeline, we took into account the  characteristics of a reactive system as defined by the [Reactive Manifesto](http://www.reactivemanifesto.org/), i.e.:
+
+- **Responsive**: latency of message processing and ability to quickly responds to failures. 
+- **Resilient**: provides high availability, failure recovery 
+- **Elastic**: scale up capacity when the limit capacity of these queues is reached. 
+- **Message Driven**: as processes in the Lambda are triggered by event and work in a non-blocking style. 
 
 ## Serverless Framework 
 
