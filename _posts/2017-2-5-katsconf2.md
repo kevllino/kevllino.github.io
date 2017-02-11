@@ -61,7 +61,7 @@ Now for those who are new to the Lambda service, if you start using it, you'll e
 "Aouch!" Yes there's no code completion or error checking, and imagine yourself having to implement and maintain many Lambda functions. This is just not viable! Thus, [Serverless framework](https://serverless.com/), an open-source web framework written in Node.js was developped to support the development and deployment of applications using AWS lambda. This framework helps managing the lifecycle of your serverless architecture (build, deploy, update, delete) by safely deploying functions, events and their required resources together via provider resource managers (e.g., AWS CloudFormation). 
 Here are some useful commands to get started writing your own serverless services: 
 
-```
+```Shell
 # serverless installation 
 npm install serverless -g
 
@@ -72,7 +72,7 @@ sls create -t aws-python -p ./data-service
 
 Below are other command to allow you to deploy, update and test your functions:
 
-```
+```Shell
 # deploy the service 
 sls deploy
 
