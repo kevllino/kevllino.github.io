@@ -4,13 +4,13 @@ title: Reactive Data Pipelines
 published: true
 ---
 
-This blog post was written for [Kats Conf](http://www.katsconf.com/) as a lightning talk and exposes how to build flexible data pipelines by leveraging the AWS stack and the Serverless framework.
+This blog post was written to prepare my lightning talk for [Kats Conf](http://www.katsconf.com/) and exposes how to build flexible data pipelines by leveraging the AWS stack and the Serverless framework.
 
 ## Context 
 
-At Nitro, our main software Nitro PDF, generates billions of user events. In fact, everytime that a user view, edit, share or sign a PDF document, an event is generated. And you are going to ask me: "_kevllino! Why are we capturing some much data?! What is the point of all that, maybe to contribute to the hype of Big Data_?". And to that I will answer: "_Data alone is not relevant, we in fact, need to trasnform, manipulate it to be able to do something relevant with it!_"
+At Nitro, our main software Nitro PDF, generates billions of user events. In fact, everytime that a user view, edit, share or sign a PDF document, an event is generated. An event contains in JSON format a unique identifier, a timestamp, an action name (start, edit, view, convert, ...), a machine id and other important fields. And you are going to ask me: "_kevllino! Why are we capturing some much data?! What is the point of all that, maybe to contribute to the hype of Big Data_?". And to that I will answer: "_Data alone is not relevant, we indeed, need to trasnform, manipulate it to be able to do something relevant with it!_"
 
-Hence, the goal was to build sessions out of those events. This data engineering project is the basis to any future Machine Learning task on customer behaviour. Knowing how the user makes use of our software will drive predictive user behavior and will allow us to improve user experience. FIY a session in our context is defined as: 
+Hence, the goal was to build sessions out of those events. This data engineering project is the basis to any future Machine Learning tasks on customer behaviour. Knowing how users utilize our software will drive predictive user behavior and will allow us to improve user experience. Moreover, an important information to know is that we define a session as: 
 
 - unique per machine 
 - a session can be created by timeout given a specific threshold between 2 consecutive events. 
@@ -26,11 +26,11 @@ In this post, we conly cover the non-grey component of the following infrastruct
 
 In order to sessionize events, there were three main steps to execute:
 
-1. Ingest the events in the pipeline
+1. Ingesting the events in the pipeline by filtering out invalid events.
 
-2. Filter our invalid events and process valid events. In this context, the processing includes a technical cleaning (fixing some erroneous value fields for some builds) and enriching the event schema, e.g. by deriving a timestamp into date and creating new features from existing ones. 
+2. Processing valid events. In this context, the processing included a technical cleaning (fixing some erroneous value fields for some builds) and enriching the event schema, e.g. by deriving a timestamp into a date and creating new features from existing ones. 
 
-3. Create the sessions by tagging events with a uuid
+3. Creating the sessions by tagging events with a uuid.
 
 ### AWS for implementation 
 
