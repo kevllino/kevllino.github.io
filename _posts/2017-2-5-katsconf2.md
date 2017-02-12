@@ -8,9 +8,9 @@ This blog post was written to prepare my lightning talk for [Kats Conf](http://w
 
 ## Context 
 
-At Nitro, our main software Nitro PDF, generates billions of user events. In fact, everytime that a user view, edit, share or sign a PDF document, an event is generated. An event contains in JSON format a unique identifier, a timestamp, an action name (start, edit, view, convert, ...), a machine id and other important fields. And you are going to ask me: "_kevllino! Why are we capturing some much data?! What is the point of all that, maybe to contribute to the hype of Big Data_?". And to that I will answer: "_Data alone is not relevant, we indeed, need to trasnform, manipulate it to be able to do something relevant with it!_"
+At Nitro, our main software Nitro PDF, generates billions of user events. In fact, every time that a user view, edit, share or sign a PDF document, an event is generated. An event contains in JSON format a unique identifier, a timestamp, an action name (start, edit, view, convert, ...), a machine id and other important fields. And you are going to ask me: "_kevllino! Why are we capturing some much data?! What is the point of all that, maybe to contribute to the hype of Big Data_?". And to that I will answer: "_Data alone is not relevant, we indeed, need to transform, manipulate it to be able to do something relevant with it!_"
 
-Hence, the goal was to build sessions out of those events. This data engineering project is the basis to any future Machine Learning tasks on customer behaviour. Knowing how users utilize our software will drive predictive user behavior and will allow us to improve user experience. Moreover, an important information to know is that we define a session as: 
+Hence, the goal was to build sessions out of those events. This data engineering project is the basis to any future Machine Learning tasks on customer behavior. Knowing how users utilize our software will drive predictive user behavior and will allow us to improve user experience. Moreover, an important information to know is that we define a session as: 
 
 - unique per machine 
 - a session can be created by timeout given a specific threshold between 2 consecutive events. 
@@ -20,7 +20,7 @@ Hence, the goal was to build sessions out of those events. This data engineering
 
 ### Overview of the pipeline 
 
-In this post, we conly cover the non-grey component of the following infrastructure: 
+In this post, we only cover the non-grey component of the following infrastructure: 
 
 ![Overview of the pipeline]({{site.baseurl}}https://github.com/kevllino/kevllino.github.io/blob/master/images/Screen%20Shot%202017-02-05%20at%2012.24.38.png?raw=true)
 
@@ -50,7 +50,7 @@ To establish a reactive data pipeline, we took into account the  characteristics
 - **Elastic**: scale up capacity when the limit capacity of these queues is reached. 
 - **Message Driven**: as processes are triggered by events and work in a non-blocking style. 
 
-As a matter of fact, all of the above are ensured thanks to the AWS components; for example,  Kinesis pipes can dynamically scale from megabytes to terabytes per hour and are reliable as data is replicated accross 3 other AWS regions. Lambdas ensure that computation is done in parallel and is a message-driven componen. Overall, the advantages of this architecture is that it is flexible, we can plug and unplug components quite easily and it is quick to get started with, [in comparison](https://blog.insightdatascience.com/ingestion-comparison-kafka-vs-kinesis-4c7f5193a7cd#.kq2nef9la) to using Kafka and one of the famous streaming engine. 
+As a matter of fact, all of the above are ensured thanks to the AWS components; for example, Kinesis pipes can dynamically scale from megabytes to terabytes per hour and are reliable as data is replicated across 3 other AWS regions. Lambdas ensure that computation is done in parallel and is a message-driven component. Overall, the advantages of this architecture is that it is flexible, we can plug and unplug components quite easily and it is quick to get started with, [in comparison](https://blog.insightdatascience.com/ingestion-comparison-kafka-vs-kinesis-4c7f5193a7cd#.kq2nef9la) to using Kafka and one of the famous streaming engine. 
 
 ## Serverless Framework 
 
@@ -58,7 +58,7 @@ Now for those who are new to the Lambda service, if you start using it, you'll e
 
 ![Lambda Console]({{site.baseurl}}https://github.com/kevllino/kevllino.github.io/blob/master/images/Screen%20Shot%202017-02-06%20at%2021.24.34.png?raw=true)
 
-"Aouch!" Yes there's no code completion or error checking, and imagine yourself having to implement and maintain many Lambda functions. This is just not viable! Thus, [Serverless framework](https://serverless.com/), an open-source web framework written in Node.js was developped to support the development and deployment of applications using AWS lambda. This framework helps managing the lifecycle of your serverless architecture (build, deploy, update, delete) by safely deploying functions, events and their required resources together via provider resource managers (e.g., AWS CloudFormation). 
+"Aouch!" Yes there's no code completion or error checking, and imagine yourself having to implement and maintain many Lambda functions. This is just not viable! Thus, [Serverless framework](https://serverless.com/), an open-source web framework written in Node.js was developed to support the development and deployment of applications using AWS lambda. This framework helps managing the lifecycle of your serverless architecture (build, deploy, update, delete) by safely deploying functions, events and their required resources together via provider resource managers (e.g., AWS CloudFormation). 
 Here are some useful commands to get started writing your own serverless services: 
 
 ```bash
@@ -94,4 +94,4 @@ Now the question that everyone will ask is: "_Why is it called serverless? Does 
 
 ## Conclusion
 
-To put it in a nutschell, if you want to build event-driven, dynamic applications like data pipelines, then using Lambda and Kinesis is convenient as their instrumentation is flexible and easy to start with. The Serverless framework will allow you to develop your applications in a smoother wasy by using your favorite IDE and pushing your code to AWS, in a similar fashion as you do with Git. If you want a concrete example of how to structure such a project, check out [this](https://github.com/kevllino/reactive-data-pipeline).
+To put it in a nutshell, if you want to build event-driven, dynamic applications like data pipelines, then using Lambda and Kinesis is convenient as their instrumentation is flexible and easy to start with. The Serverless framework will allow you to develop your applications in a smoother way by using your favorite IDE and pushing your code to AWS, in a similar fashion as you do with Git. If you want a concrete example of how to structure such a project, check out [this](https://github.com/kevllino/reactive-data-pipeline).
