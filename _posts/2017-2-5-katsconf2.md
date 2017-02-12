@@ -82,7 +82,7 @@ sls deploy function -f function1
 # invoke a function against sample data 
 sls invoke -f function1 -p event.json
 
-#  invoke a function triggered by an event from a Kinesis Stream for example 
+#  invoke a function triggered by an event from a Kinesis Stream 
 sls invoke -f hello -t Event
 
 # get the CloudWatch logs 
