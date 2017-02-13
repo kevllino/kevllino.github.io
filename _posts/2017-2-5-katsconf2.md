@@ -50,7 +50,7 @@ To establish a reactive data pipeline, we took into account the  characteristics
 - **Elastic**: scale up capacity when the limit capacity of these queues is reached. 
 - **Message Driven**: as processes are triggered by events and work in a non-blocking style. 
 
-As a matter of fact, all of the above are ensured thanks to the AWS components; for example, Kinesis pipes can dynamically scale from megabytes to terabytes per hour and are reliable as data is replicated across 3 other AWS regions. Lambdas ensure that computation is done in parallel and is a message-driven component. Overall, the advantages of this architecture is that it is flexible, we can plug and unplug components quite easily and it is quick to get started with, [in comparison](https://blog.insightdatascience.com/ingestion-comparison-kafka-vs-kinesis-4c7f5193a7cd#.kq2nef9la) to using Kafka and one of the famous streaming engine. 
+As a matter of fact, all of the above are ensured thanks to the AWS components; for example, Kinesis pipes can dynamically scale from megabytes to terabytes per hour and are reliable as data is replicated across 3 other AWS regions. Lambdas ensure that computation is done in parallel and is a message-driven component. Overall, the advantages of this architecture is that it is flexible, we can plug and unplug components quite easily and it is quick to get started with, [in comparison](https://blog.insightdatascience.com/ingestion-comparison-kafka-vs-kinesis-4c7f5193a7cd#.kq2nef9la) to using Kafka and one of the famous streaming engines. 
 
 ## Serverless Framework 
 
@@ -58,7 +58,7 @@ Now for those who are new to the Lambda service, if you start using it, you'll e
 
 ![Lambda Console]({{site.baseurl}}https://github.com/kevllino/kevllino.github.io/blob/master/images/Screen%20Shot%202017-02-06%20at%2021.24.34.png?raw=true)
 
-"Aouch!" Yes there's no code completion or error checking, and imagine yourself having to implement and maintain many Lambda functions. This is just not viable! Thus, [Serverless framework](https://serverless.com/), an open-source web framework written in Node.js was developed to support the development and deployment of applications using AWS lambda. This framework helps managing the lifecycle of your serverless architecture (build, deploy, update, delete) by safely deploying functions, events and their required resources together via provider resource managers (e.g., AWS CloudFormation). 
+"Ouch!" Yes there's no code completion or error checking, and imagine yourself having to implement and maintain many Lambda functions. This is just not viable! Thus, [Serverless framework](https://serverless.com/), an open-source web framework written in Node.js was developed to support the development and deployment of applications using AWS lambda. This framework helps managing the lifecycle of your serverless architecture (build, deploy, update, delete) by safely deploying functions, events and their required resources together via provider resource managers (e.g., AWS CloudFormation). 
 Here are some useful commands to get started writing your own serverless services: 
 
 ```bash
