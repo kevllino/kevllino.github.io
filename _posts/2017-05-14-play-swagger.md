@@ -78,7 +78,7 @@ GET   /assets/*file                 controllers.Assets.versioned(path="/public",
 
 Here's an example of what can be seen in the swagger-ui, w.r.t. the stamp specification: 
 
-![Specification for stamp in swagger-ui](https://github.com/kevllino/kevllino.github.io/blob/master/images/Screen%20Shot%202017-05-14%20at%2014.34.57.png)
+![Specification for stamp in swagger-ui](https://github.com/kevllino/kevllino.github.io/blob/master/images/Screen%20Shot%202017-05-14%20at%2014.34.57.png?raw=true)
 
 ## Debugging with Swagger Editor
 
