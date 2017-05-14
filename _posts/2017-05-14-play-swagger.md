@@ -60,8 +60,12 @@ GET   /docs/swagger.json            controllers.Assets.at(path ="/public", file 
 
 To test your definitions about custom input you can use swagger UI, by having your Play aplication running the swagger-ui: 
 
-1. Add the following dependency: `libraryDependencies += "org.webjars" % "swagger-ui" % "2.2.0"`
+1. Add the following dependency: 
+
+`libraryDependencies += "org.webjars" % "swagger-ui" % "2.2.0"`
+
 1. Add to your route file: 
+
 ```
 ### NoDocs ###
 GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
@@ -69,6 +73,7 @@ GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/l
 ### NoDocs ###
 GET   /assets/*file                 controllers.Assets.versioned(path="/public", file: Asset)
 ```
+
 1. `sbt project/run` and then navigate to [swagger-ui](http://localhost:9000/docs/swagger-ui/index.html?url=/assets/swagger.json)
 
 Here's an example of what can be seen in the swagger-ui, w.r.t. the stamp specification: 
@@ -85,4 +90,3 @@ Here's an example of what can be seen in the swagger-ui, w.r.t. the stamp specif
 
 - To hide an endpoint documentation, include `### NoDocs ###` before the route definition.
 - Swagger doesn't like `Iterable`, convert to `Seq`
-
