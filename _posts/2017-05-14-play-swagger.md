@@ -24,7 +24,9 @@ To generate specification for a specific case class, without having to detail it
 `$ref: '#/definitions/com.orgName.documents.signing.StampRequest'`. To auto generate those swagger definitions, you will also need to add domain package names to play-swagger in build.sbt: `swaggerDomainNameSpaces := Seq("com.orgName.documents")`. This will make classes and objects in documents visible and will enable you to reference them in your schema definitions.
 
 For building to a docker image add to build.sbt:
-```stage in Docker := {
+
+```
+stage in Docker := {
    swagger.value
    (stage in Docker).value
 }
