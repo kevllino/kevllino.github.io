@@ -1,7 +1,6 @@
 ---
 published: true
 ---
-## Getting started with Play-Swagger
 
 In order to document our API endpoints related to Stamp and Fields logic, we chose to use Swagger in our Play application. Howver, I found it hard to find a guide about using this technology from scratch. My goal in this post is to make it easy for newcomers to learn Play-Swagger. 
 
