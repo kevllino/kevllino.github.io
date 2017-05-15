@@ -61,11 +61,11 @@ GET   /docs/swagger.json            controllers.Assets.at(path ="/public", file 
 
 To test your definitions about custom input you can use swagger UI, by having your Play aplication running the swagger-ui: 
 
-1. Add the following dependency: 
+- Add the following dependency: 
 
 `libraryDependencies += "org.webjars" % "swagger-ui" % "2.2.0"`
 
-2. Add to your route file: 
+- Add to your route file: 
 
 ```
 ### NoDocs ###
@@ -75,7 +75,7 @@ GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/l
 GET   /assets/*file                 controllers.Assets.versioned(path="/public", file: Asset)
 ```
 
-3. `sbt project/run` and then navigate to [swagger-ui](http://localhost:9000/docs/swagger-ui/index.html?url=/assets/swagger.json)
+- `sbt project/run` and then navigate to [swagger-ui](http://localhost:9000/docs/swagger-ui/index.html?url=/assets/swagger.json)
 
 Here's an example of what can be seen in the swagger-ui, w.r.t. the stamp specification: 
 
