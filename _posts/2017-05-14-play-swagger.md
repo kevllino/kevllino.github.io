@@ -6,7 +6,7 @@ In order to document our API endpoints related to document stamping, we (Nitro) 
 
 ## Swagger
 
-Swagger is a framework generating specifications which act as the RESTful contract for your API, detailing all of its resources and operations in a human and machine readable format for easy development, discovery, and integration. [play-swagger](https://github.com/iheartradio/play-swagger) is a library written by iheartradio that generates swagger specs from route files and case class reflection (no code annotation needed). 
+Swagger is a framework generating specifications which act as the RESTful contract for your API, detailing all of its resources and operations in a human and machine readable format for easy development, discovery, and integration. [play-swagger](https://github.com/iheartradio/play-swagger) is a library written by [iHeartRadio](https://github.com/iheartradio/play-swagger) that generates swagger specs from route files and case class reflection (no code annotation needed). 
  
 ## Configuration
 
@@ -14,7 +14,7 @@ To get you started, we will take the example of generating a specification for c
 
 Add to plugin.sbt:
 
-`addSbtPlugin("com.iheart" % "sbt-play-swagger" % "0.5.4-PLAY2.4"`
+`addSbtPlugin("com.iheart" % "sbt-play-swagger" % "0.5.4-PLAY2.4")`
 
 Enable the plugin in build.sbt in the folder containing your *.routes files:
 
