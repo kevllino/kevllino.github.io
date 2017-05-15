@@ -27,7 +27,10 @@ To generate specification for a specific case class, without having to detail it
 `$ref: '#/definitions/com.orgName.documents.signing.StampRequest'`. 
 
 To auto generate those swagger definitions, you will also need to add domain package names to play-swagger in build.sbt: 
-`swaggerDomainNameSpaces := Seq("com.orgName.documents")`. This will make classes and objects in documents visible and will enable you to reference them in your schema definitions.
+
+`swaggerDomainNameSpaces := Seq("com.orgName.documents")` 
+
+This will make classes and objects in documents visible and will enable you to reference them in your schema definitions.
 
 For building to a docker image add to build.sbt:
 
@@ -70,7 +73,7 @@ To test your definitions about custom input you can use swagger UI, by having yo
 
 `libraryDependencies += "org.webjars" % "swagger-ui" % "2.2.0"`
 
-1. Add to your route file: 
+2. Add to your route file: 
 
 ```
 ### NoDocs ###
@@ -80,7 +83,7 @@ GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/l
 GET   /assets/*file                 controllers.Assets.versioned(path="/public", file: Asset)
 ```
 
-1. `sbt project/run` and then navigate to [swagger-ui](http://localhost:9000/docs/swagger-ui/index.html?url=/assets/swagger.json)
+3. `sbt project/run` and then navigate to [swagger-ui](http://localhost:9000/docs/swagger-ui/index.html?url=/assets/swagger.json)
 
 Here's an example of what can be seen in the swagger-ui, w.r.t. the stamp specification: 
 
