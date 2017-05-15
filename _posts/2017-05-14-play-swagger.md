@@ -2,7 +2,7 @@
 published: true
 ---
 
-In order to document our API endpoints related to document stamping, we chose to use Swagger in our Play application. However, I found it hard to find a guide about using this technology from scratch. My goal in this post is to make it easier for newcomers get up and running Play-Swagger. 
+In order to document our API endpoints related to document stamping, we (Nitro) chose to use Swagger in our Play application. However, I found it hard to find a guide about using this technology from scratch. My goal in this post is to make it easier for newcomers to get up and running with Play-Swagger. 
 
 ## Swagger
 
@@ -13,15 +13,21 @@ Swagger is a framework generating specifications which act as the RESTful contra
 To get you started, we will take the example of generating a specification for creating a stamp on a document. First, you should:
 
 Add to plugin.sbt:
+
 `addSbtPlugin("com.iheart" % "sbt-play-swagger" % "0.5.4-PLAY2.4"`
 
 Enable the plugin in build.sbt in the folder containing your *.routes files:
+
 `lazy val server = project.settings(name := "service-name-server").enablePlugins(PlayScala, SwaggerPlugin)`
 
 Here are some additional configurations you need:
 
 To generate specification for a specific case class, without having to detail it manually, you can define a schema pointing to this case class the following way: 
-`$ref: '#/definitions/com.orgName.documents.signing.StampRequest'`. To auto generate those swagger definitions, you will also need to add domain package names to play-swagger in build.sbt: `swaggerDomainNameSpaces := Seq("com.orgName.documents")`. This will make classes and objects in documents visible and will enable you to reference them in your schema definitions.
+
+`$ref: '#/definitions/com.orgName.documents.signing.StampRequest'`. 
+
+To auto generate those swagger definitions, you will also need to add domain package names to play-swagger in build.sbt: 
+`swaggerDomainNameSpaces := Seq("com.orgName.documents")`. This will make classes and objects in documents visible and will enable you to reference them in your schema definitions.
 
 For building to a docker image add to build.sbt:
 
