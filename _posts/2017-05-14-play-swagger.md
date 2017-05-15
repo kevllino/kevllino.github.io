@@ -90,4 +90,4 @@ Here's an example of what can be seen in the swagger-ui, w.r.t. the stamp specif
 ### Additional information
 
 - To hide an endpoint documentation, include `### NoDocs ###` before the route definition.
-- Swagger doesn't like `Iterable`, convert to `Seq`
+- Swagger won't recognize the `Iterable` type, hence, you might want to it convert to `Seq`
