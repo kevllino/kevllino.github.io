@@ -2,7 +2,7 @@
 published: true
 ---
 
-In order to document our API endpoints related to document stamping, we (Nitro) chose to use Swagger in our Play application. However, I found it hard to find a guide about using this technology from scratch. My goal in this post is to make it easier for newcomers to get up and running with Play-Swagger. 
+In order to document our API endpoints related to document stamping, we, at Nitro, chose to use Swagger in our Play application. However, we found it hard to find a guide about using this technology from scratch. My goal in this post is to make it easier for newcomers to get up and running with Play-Swagger. 
 
 ## Swagger
 
@@ -38,7 +38,7 @@ This will make classes and objects in documents visible and will enable you to r
 To start documenting your endpoints, create 2 files in your conf directory:
 
 - swagger.yml: contains your basic configurations and definitions. You should add `Bearer <token>` to add authentication support to the swagger UI, that way you can test endpoints right from swagger.
-- swagger-custom-mappings.yml: swagger may encounter some difficulties converting some case classes to json objects. In this file you define a set of mapping to help with the conversion. For example, it won't be able to recognize our custom case classes defined in our custom *orgLibrary*, e.g. Id., the solution is to define a regex and map it to the expected type, e.g. we map com\.orgName\.orgLibrary\.models\.Id.* to string. Also you should manually define enum type fields.
+- swagger-custom-mappings.yml: swagger may encounter some difficulties converting some case classes to json objects. In this file you define a set of mapping to help with the conversion. For example, swagger won't be able to recognize our custom case classes defined in our custom *orgLibrary*, e.g. Id., the solution is to define a regex and map it to the expected type, e.g. we map com\.orgName\.orgLibrary\.models\.Id.* to string. Also you should manually define enum type fields.
 - routes: add the documentation before a specific route definition:
 
 ```
@@ -59,7 +59,7 @@ GET   /docs/swagger.json            controllers.Assets.at(path ="/public", file 
 
 ## Swagger UI
 
-To test your definitions about custom input you can use swagger UI, by having your Play aplication running the swagger-ui: 
+To test your definitions about custom input you can use the swagger UI, by having your Play application running it: 
 
 - Add the following dependency: 
 
@@ -90,4 +90,4 @@ Here's an example of what can be seen in the swagger-ui, w.r.t. the stamp specif
 ### Additional information
 
 - To hide an endpoint documentation, include `### NoDocs ###` before the route definition.
-- Swagger won't recognize the `Iterable` type, hence, you might want to it convert to `Seq`
+- Swagger won't recognize the `Iterable` type, hence, you might want to  convert it to `Seq`
