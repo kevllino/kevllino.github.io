@@ -2,7 +2,6 @@
 published: true
 ---
 
-# Preparing for the Google Cloud Professional Data Engineer Certification
 In this blogpost, I'd like to describe my specific experience taking the exam, from studying to the exam date. I hope to give as much tips and knowledge for future exam takers.
 
 ## Background
