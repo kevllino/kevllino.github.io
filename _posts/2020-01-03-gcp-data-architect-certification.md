@@ -2,7 +2,7 @@
 published: true
 ---
 
-This post will be very short as you can find more details in my [previous post](_posts/2019-10-02-gcp-data-engineer-certification.md) related to the GCP Data Engineer certification. 
+This post will be very short as you can find more details in my previous post related to the GCP Data Engineer certification. 
 
 ## Tips to pass with flying colors
 
@@ -15,6 +15,7 @@ need to study in-depth these topics
 - I can't recommend enough the study materials from the [Linux Academy](https://linuxacademy.com/course/google-cloud-certified-professional-cloud-architect/), I studied with the Coursera one too, but the former is enough. 
 
 ## Conclusion 
+
 As with other exams, you only need to put the time and focus to be sure to succeed, take your time to study (if you need), but not too much, I usually book the exam date and then start preparing and this 
 makes it compulsory for me not to procrastinate. In the end, it's worth taking the certification as it'll give you a overview of what services Google offer, moreover you'll get some swags ;). 
 
