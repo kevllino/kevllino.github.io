@@ -14,7 +14,10 @@ Basically, after studying for the Data Engineer certification, it was way easier
 need to study in-depth these topics
 - I can't recommend enough the study materials from the [Linux Academy](https://linuxacademy.com/course/google-cloud-certified-professional-cloud-architect/), I studied with the Coursera one too, but the former is enough. 
 
+<br>
+
 ## Conclusion 
+<br>
 
 As with other exams, you only need to put the time and focus to be sure to succeed, take your time to study (if you need), but not too much, I usually book the exam date and then start preparing and this 
 makes it compulsory for me not to procrastinate. In the end, it's worth taking the certification as it'll give you a overview of what services Google offer, moreover you'll get some swags ;). 
