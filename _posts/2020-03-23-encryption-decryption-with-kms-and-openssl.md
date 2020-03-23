@@ -2,7 +2,6 @@
 published: true
 ---
 
-## Description
 This article describes how you can provide an external party a KMS public key for them to use along OpenSSL to securely encrypt your data. 
 
 ## Requirements
