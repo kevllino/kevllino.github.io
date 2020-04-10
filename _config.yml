@@ -87,5 +87,4 @@ exclude:
 
 # Build settings
 markdown: kramdown
-remote_theme: artemsheludko/flexible-jekyll
 theme: jekyll-theme-cayman
