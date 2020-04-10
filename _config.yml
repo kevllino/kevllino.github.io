@@ -84,3 +84,7 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+
+# Build settings
+markdown: kramdown
+remote_theme: artemsheludko/flexible-jekyll
