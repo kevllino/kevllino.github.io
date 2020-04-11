@@ -1,8 +1,6 @@
 title: Europa Tech Ltd
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Europa Tech Ltd - Providing lean and flexible data analytics services since 2019.
 permalink: ':title/'
 baseurl: "/kevllino.github.io" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
@@ -14,7 +12,7 @@ company: Europa Tech Ltd
 company-img: europa-tech.png
 about-company: Europa Tech Ltd - Lean, flexible data analytics consulting.
 author-img: kevineid.png # add your photo
-about-author: I'm Kevin Eid director and data engineer at Europa Tech Ltd where we provide you with flexible and lean data analytics consulting capabilities ranging from cloud migration to implementation of big data pipelines and machine learning models.
+about-author: I'm Kevin Eid, Director and a data engineer at Europa Tech Ltd - where we provide our clients with bespoke and lean data analytics consulting services, ranging from cloud migration to implementation of big data pipelines and machine learning models. We bring skills and experience working with a range of clients - from FTSE 100 companies to US multinational firms to startups - across a range of industries, including information technology, financial services, telecommunications, and e-commerce. <br><>br> For general inquiries or speaking engagement requests, or to learn more about what we can do for your company, please feel free to reach out to us at europatech.limited@gmail.com
 social-twitter: KevinEID75# add your Twitter handle
 social-github: kevllino # add your Github handle
 social-linkedin: kevin-eid-b0168985 # add your Linkedin handle
