@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Reactive Data Pipelines - Europa Tech Ltd</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="Europa Tech Ltd" property="og:site_name">
+  
+    <meta content="Reactive Data Pipelines" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="This blog post was written to prepare my lightning talk for [Kats Conf](http://www.katsconf.com/) and exposes how to build flexible data pipelines by leveraging the AWS stack and the Serverless framework." property="og:description">
+  
+  
+    <meta content="http://localhost:4000/katsconf2/" property="og:url">
+  
+  
+    <meta content="2017-02-05T10:32:20+00:00" property="article:published_time">
+    <meta content="http://localhost:4000/about/" property="article:author">
+  
+  
+    <meta content="http://localhost:4000/flexible-jekyll/assets/img/kats-conf.png" property="og:image">
+  
+  
+    
+  
+  
+    
+    <meta content="AWS" property="article:tag">
+    
+    <meta content="Conference" property="article:tag">
+    
+    <meta content="Reactive" property="article:tag">
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@KevinEID75# add your Twitter handle">
+  
+    <meta name="twitter:title" content="Reactive Data Pipelines">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/katsconf2/">
+  
+  
+    <meta name="twitter:description" content="This blog post was written to prepare my lightning talk for [Kats Conf](http://www.katsconf.com/) and exposes how to build flexible data pipelines by leveraging the AWS stack and the Serverless framework.">
+  
+  
+    <meta name="twitter:image:src" content="http://localhost:4000/flexible-jekyll/assets/img/kats-conf.png">
+  
+
+	<meta name="description" content="This blog post was written to prepare my lightning talk for [Kats Conf](http://www.katsconf.com/) and exposes how to build flexible data pipelines by leveraging the AWS stack and the Serverless framework.">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/flexible-jekyll/assets/img/favicon/favicon.png" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/flexible-jekyll/assets/img/favicon/favicon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/flexible-jekyll/assets/img/favicon/favicon.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/flexible-jekyll/assets/img/favicon/favicon.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/flexible-jekyll/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/flexible-jekyll/assets/css/main.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/flexible-jekyll/"><img src="/flexible-jekyll/assets/img/kevineid.png" alt="Kevin Eid"></a>
+      </div>
+      <div class="author-name">Kevin Eid</div>
+      <p>Europa Tech Ltd - Lean, flexible data analytics consulting.</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        
+          <li><a href="https://twitter.com/KevinEID75# add your Twitter handle" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        
+        
+          <li class="github"><a href="http://github.com/kevllino" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+          <li class="linkedin"><a href="https://in.linkedin.com/in/kevin-eid-b0168985" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        
+        
+          <li class="stack-exchange"><a href="https://stackoverflow.com/users/5387861/kevin-eid" target="_blank"><i class="fa fa-stack-exchange" aria-hidden="true"></i></a></li>
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2020 &copy; Europa Tech Ltd</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    <div class="page-cover-image">
+      <figure>
+        <img class="page-image" src=/flexible-jekyll/assets/img/kats-conf.png alt="Reactive Data Pipelines">
+        
+      </figure>
+    </div> <!-- End Page Cover Image -->
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">Reactive Data Pipelines</h1>
+        <div class="page-date"><span>2017, Feb 05&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <p>This blog post was written to prepare my lightning talk for <a href="http://www.katsconf.com/">Kats Conf</a> and exposes how to build flexible data pipelines by leveraging the AWS stack and the Serverless framework.</p>
+
+<h2 id="context">Context</h2>
+
+<p>At Nitro, our main software Nitro PDF, generates billions of user events. In fact, every time that a user views, edits, shares or signs a PDF document, an event is generated. An event contains in JSON format a unique identifier, a timestamp, an action name (start, edit, view, convert, …), a machine id and other important fields. And you are going to ask me: “<em>kevllino! Why are we capturing some much data?! What is the point of all that, maybe to contribute to the hype of Big Data</em>?”. And to that I will answer: “<em>Data alone is not relevant, we indeed, need to transform, manipulate it to be able to do something relevant with it!</em>”</p>
+
+<p>Hence, the goal was to build sessions out of those events. This data engineering project is the basis to any future Machine Learning tasks on customer behavior. Knowing how users utilize our software will drive predictive user behavior and will allow us to improve user experience. Moreover, an important information to know is that we define a session as:</p>
+
+<ul>
+  <li>unique per machine</li>
+  <li>a session can be created by timeout given a specific threshold between 2 consecutive events.</li>
+  <li>a session can be created by an opening event</li>
+</ul>
+
+<h2 id="technology-stack">Technology stack</h2>
+
+<h3 id="overview-of-the-pipeline">Overview of the pipeline</h3>
+
+<p>In this post, we only cover the non-grey component of the following infrastructure:</p>
+
+<p><img src="/flexible-jekyll/assets/img/kats2conf/pipeline_overview.png" alt="Overview of the pipeline" /></p>
+
+<p>In order to sessionize events, there were three main steps to execute:</p>
+
+<ol>
+  <li>
+    <p><strong>Ingesting</strong> the events in the pipeline by filtering out invalid events.</p>
+  </li>
+  <li>
+    <p><strong>Processing</strong> valid events. In this context, the processing included a technical cleaning (fixing some erroneous value fields for some builds) and enriching the event schema, e.g. by deriving a timestamp into a date and creating new features from existing ones.</p>
+  </li>
+  <li>
+    <p><strong>Sessionizing</strong>: creating the sessions by tagging events with a uuid.</p>
+  </li>
+</ol>
+
+<h3 id="leveraging-aws-components">Leveraging AWS components</h3>
+
+<p>In order to implement the business logic of those steps, we used <strong>AWS Lambda</strong> in Python 2.7 (as AWS Lambda does not support 3+ versions). To transfer the data across the pipeline, we used Kinesis components, <strong>Kinesis Streams</strong> are used to move data between Lambdas and <strong>Kinesis Firehose</strong> to deliver data to S3 buckets through a <em>delivery stream</em>. Lambda is <a href="https://aws.amazon.com/lambda/faqs/">great</a> in that, you don’t have to manage the back-end of your application and you only pay for the compute time, i.e. every time your Lambda code gets triggered by external events such as events coming from a stream. Besides using Lambda for processing events, it also serves as a bridge to connect different pipeline components. In fact to transfer data coming from a Kinesis Stream to an S3 bucket, one needs a lambda to connect them.</p>
+
+<p>The following schema defines a generic Lambda which will retrieve data triggered by a Kinesis Stream and post it into a Firehose pipe which will deliver the data to the desired S3 bucket.</p>
+
+<p><img src="/flexible-jekyll/assets/img/kats2conf/generic_lambda.png" alt="Generic Lambda" /></p>
+
+<h3 id="why-reactive">Why Reactive?</h3>
+
+<p>To establish a reactive data pipeline, we took into account the  characteristics of a reactive system as defined by the <a href="http://www.reactivemanifesto.org/">Reactive Manifesto</a>, i.e.:</p>
+
+<ul>
+  <li><strong>Responsive</strong>: latency of message processing and ability to quickly responds to failures.</li>
+  <li><strong>Resilient</strong>: provides high availability, failure recovery.</li>
+  <li><strong>Elastic</strong>: scale up capacity when the limit capacity of these queues is reached.</li>
+  <li><strong>Message Driven</strong>: as processes are triggered by events and work in a non-blocking style.</li>
+</ul>
+
+<p>As a matter of fact, all of the above are ensured thanks to the AWS components; for example, Kinesis pipes can dynamically scale from megabytes to terabytes per hour and are reliable as data is replicated across 3 other AWS regions. Lambdas ensure that computation is done in parallel and is a message-driven component. Overall, the advantages of this architecture is that it is flexible, we can plug and unplug components quite easily and it is quick to get started with, <a href="https://blog.insightdatascience.com/ingestion-comparison-kafka-vs-kinesis-4c7f5193a7cd#.kq2nef9la">in comparison</a> to using Kafka and one of the famous streaming engines (Spark Streaming, Apache Storm, Apache Flink, …)..</p>
+
+<h2 id="serverless-framework">Serverless Framework</h2>
+
+<p>Now for those who are new to the Lambda service, if you start using it, you’ll end up having to code in the AWS console like this:</p>
+
+<p><img src="/flexible-jekyll/assets/img/kats2conf/lambda-console.png" alt="Lambda Console" /></p>
+
+<p>“Ouch!” Yes there’s no code completion or error checking, and imagine yourself having to implement and maintain many Lambda functions. This is just not viable! Thus, <a href="https://serverless.com/">Serverless framework</a>, an open-source web framework written in Node.js was developed to support the development and deployment of applications using AWS lambda. This framework helps managing the lifecycle of your serverless architecture (build, deploy, update, delete) by safely deploying functions, events and their required resources together via provider resource managers (e.g., AWS CloudFormation). 
+Here are some useful commands to get started writing your own serverless services:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># serverless installation </span>
+npm <span class="nb">install </span>serverless <span class="nt">-g</span>
+
+<span class="c"># service creation </span>
+sls create <span class="nt">-t</span> aws-python <span class="nt">-p</span> ./data-service
+</code></pre></div></div>
+<p><img src="/flexible-jekyll/assets/img/kats2conf/serverless.png" alt="Serverless Service Creation" /></p>
+
+<p>Below are other command to allow you to deploy, update and test your functions:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># deploy the service </span>
+sls deploy
+
+<span class="c"># deploy one function </span>
+sls deploy <span class="k">function</span> <span class="nt">-f</span> function1 
+
+<span class="c"># invoke a function against sample data </span>
+sls invoke <span class="nt">-f</span> function1 <span class="nt">-p</span> event.json
+
+<span class="c">#  invoke a function triggered by an event from a Kinesis Stream </span>
+sls invoke <span class="nt">-f</span> hello <span class="nt">-t</span> Event
+
+<span class="c"># get the CloudWatch logs </span>
+sls logs <span class="nt">-f</span> hello
+</code></pre></div></div>
+
+<p>Now the question that everyone will ask is: “<em>Why is it called serverless? Does it mean that there are no servers at all?!</em>”. No there’re still some servers somewhere, serverless refers to serverless computing, which means that you don’t need to provision and maintain servers, as AWS or IBM OpenWhisk do it for you. You only need to focus on your code.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>To put it in a nutshell, if you want to build event-driven, dynamic applications like data pipelines, then using Lambda and Kinesis is convenient as their instrumentation is flexible and easy to start with. The Serverless framework will allow you to develop your applications in a smoother way by using your favorite IDE and pushing your code to AWS, in a similar fashion as you do with Git. If you want a concrete example of how to structure such a project, check out <a href="https://github.com/kevllino/reactive-data-pipeline">this repo</a>.</p>
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=Reactive Data Pipelines&url=http://localhost:4000/katsconf2/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/katsconf2/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/katsconf2/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+            <a href="/flexible-jekyll/tags#AWS" class="tag">&#35; AWS</a>
+          
+            <a href="/flexible-jekyll/tags#Conference" class="tag">&#35; Conference</a>
+          
+            <a href="/flexible-jekyll/tags#Reactive" class="tag">&#35; Reactive</a>
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//mr-brown.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

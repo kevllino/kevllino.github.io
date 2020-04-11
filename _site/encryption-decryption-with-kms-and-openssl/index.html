@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Encryption / Decryption with AWS KMS and OpenSSL - Europa Tech Ltd</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="Europa Tech Ltd" property="og:site_name">
+  
+    <meta content="Encryption / Decryption with AWS KMS and OpenSSL" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="This article describes how you can provide an external party a KMS public key for them to use along OpenSSL to securely encrypt your data." property="og:description">
+  
+  
+    <meta content="http://localhost:4000/encryption-decryption-with-kms-and-openssl/" property="og:url">
+  
+  
+    <meta content="2020-03-23T10:32:20+00:00" property="article:published_time">
+    <meta content="http://localhost:4000/about/" property="article:author">
+  
+  
+    <meta content="http://localhost:4000/flexible-jekyll/assets/img/open_ssl_kms.png" property="og:image">
+  
+  
+    
+  
+  
+    
+    <meta content="AWS" property="article:tag">
+    
+    <meta content="KMS" property="article:tag">
+    
+    <meta content="Encryption" property="article:tag">
+    
+    <meta content="OpenSSL" property="article:tag">
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@KevinEID75# add your Twitter handle">
+  
+    <meta name="twitter:title" content="Encryption / Decryption with AWS KMS and OpenSSL">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/encryption-decryption-with-kms-and-openssl/">
+  
+  
+    <meta name="twitter:description" content="This article describes how you can provide an external party a KMS public key for them to use along OpenSSL to securely encrypt your data.">
+  
+  
+    <meta name="twitter:image:src" content="http://localhost:4000/flexible-jekyll/assets/img/open_ssl_kms.png">
+  
+
+	<meta name="description" content="This article describes how you can provide an external party a KMS public key for them to use along OpenSSL to securely encrypt your data.">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/flexible-jekyll/assets/img/favicon/favicon.png" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/flexible-jekyll/assets/img/favicon/favicon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/flexible-jekyll/assets/img/favicon/favicon.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/flexible-jekyll/assets/img/favicon/favicon.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/flexible-jekyll/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/flexible-jekyll/assets/css/main.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/flexible-jekyll/"><img src="/flexible-jekyll/assets/img/kevineid.png" alt="Kevin Eid"></a>
+      </div>
+      <div class="author-name">Kevin Eid</div>
+      <p>Europa Tech Ltd - Lean, flexible data analytics consulting.</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        
+          <li><a href="https://twitter.com/KevinEID75# add your Twitter handle" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        
+        
+          <li class="github"><a href="http://github.com/kevllino" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+          <li class="linkedin"><a href="https://in.linkedin.com/in/kevin-eid-b0168985" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        
+        
+          <li class="stack-exchange"><a href="https://stackoverflow.com/users/5387861/kevin-eid" target="_blank"><i class="fa fa-stack-exchange" aria-hidden="true"></i></a></li>
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2020 &copy; Europa Tech Ltd</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    <div class="page-cover-image">
+      <figure>
+        <img class="page-image" src=/flexible-jekyll/assets/img/open_ssl_kms.png alt="Encryption / Decryption with AWS KMS and OpenSSL">
+        
+      </figure>
+    </div> <!-- End Page Cover Image -->
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">Encryption / Decryption with AWS KMS and OpenSSL</h1>
+        <div class="page-date"><span>2020, Mar 23&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <p>This article describes how you can provide an external party a KMS public key for them to use along OpenSSL to securely encrypt your data.</p>
+
+<h2 id="requirements">Requirements</h2>
+<p>You need to create a KMS Asymmetric key in AWS prior to running the next steps. 
+Specify the follow parameters to create your key:</p>
+<ul>
+  <li>Key Type: Asymmetric</li>
+  <li>Key usage: Encrypt and decrypt</li>
+  <li>Key Spec: RSA 2048</li>
+</ul>
+
+<h2 id="steps">Steps</h2>
+<p>1 - Send the public key to the third party
+You can use the following command from an IAM user/role with permissions to create a file with public key material:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws kms get-public-key --key-id &lt;kid&gt; --query PublicKey --output text --region us-east-1 | base64 -di | openssl rsa -pubin -inform DER -pubout -outform PEM -out pubkey.pem
+</code></pre></div></div>
+<p>OR you can just download the public key from the KMS console [1]. Once you have the file, you can send it to the third party.
+pubkey.pem -&gt; file in which public key is stored</p>
+
+<p>2 - Upon receiving the public key, the third party has to first generate a random key that will be used to encrypt the data.
+The following command will generate a 256 bit (32 byte) random key:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl rand -base64 32 &gt; key.bin
+</code></pre></div></div>
+<p>key.bin -&gt; file in which the random key is stored</p>
+
+<p>3 - The third party encrypts the random key generated in step 2 with the public key sent in step 1.
+We can do this in two ways, please see commands below.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># method 1: rsautl tool [2]
+openssl rsautl -encrypt -oaep -inkey pubkey.pem -pubin -in key.bin -out key.bin.enc # key.bin.enc -&gt; file that consists of encrypted random key with rsautl
+
+# method 2: pkeyutl tool [3]
+openssl pkeyutl -encrypt -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha256 -in key.bin -pubin -inkey pubkey.pem -out keypke.bin.enc # keypke.bin.enc -&gt; file that consists of encrypted random key with pkeyutl
+</code></pre></div></div>
+
+<p>Please note that in method 1, the default algorithm is RSA algorithm that is supported by KMS asymmetric keys. You can use method 2 if you want to select a particular algorithm, see list of supported algorithms in [3]. Also, I am using a terminal in MacOS and I am having issues with pkeyutl tool whereas service team was using linux box and the same command was working. So please test the above command and make sure the OS the third party is using before implementing this step.</p>
+
+<p>4 - Third party encrypts the data using the random key generated in step 2</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl enc -aes-256-cbc -salt -in DATA -out DATA.enc -pass file:./key.bin -pbkdf2
+</code></pre></div></div>
+<p>Here, I used the “AES-256-CBC” symmetric encryption algorithm. But the enc command in openssl supports multiple algorithms and you can find all of them and the syntax for this command in [4].</p>
+
+<p>DATA -&gt; file that consists of the data to be encrypted and sent to you
+DATA.enc -&gt; encrypted data file</p>
+
+<p>5 - Third party has to send you the following two files and the algorithm used</p>
+<ul>
+  <li>
+    <p>key.bin.enc OR keypke.bin.enc depending on which tool was used -&gt; encrypted random key</p>
+  </li>
+  <li>DATA.enc -&gt; encrypted data file</li>
+  <li>Algorithm used: AES-256-CBC with -aes-256-cbc flag</li>
+</ul>
+
+<p>6 - You have to first decrypt [5] the random key (key.bin.enc OR keypke.bin.enc)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># method 1: rsautl
+aws kms decrypt --key-id &lt;kid&gt; --encryption-algorithm RSAES_OAEP_SHA_1 --ciphertext-blob fileb://key.bin.enc --query Plaintext --output text --region us-east-1 | base64 -di &gt; keyplaintext.bin
+
+# method 2: pkeyutl
+aws kms decrypt --key-id &lt;kid&gt; --encryption-algorithm RSAES_OAEP_SHA_256 --ciphertext-blob fileb://keypke.bin.enc --query Plaintext --output text --region us-east-1 | base64 -di &gt; keyplaintext.bin
+</code></pre></div></div>
+
+<p>keyplaintext.bin -&gt; file with random key generated by 3rd party in step 2 in plaintext form</p>
+
+<p>7 - Decrypt DATA.enc with the random key from step 6</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl enc -d -aes-256-cbc -in DATA.enc -out DATA_plaintext -pass file:./keyplaintext.bin -pbkdf2
+</code></pre></div></div>
+
+<p>You will have to use the algorithm sent by third party in step 5.
+DATA_plaintext -&gt; final data in plaintext form</p>
+
+<p>Please note that, you have to perform the steps 1,6 and 7 whereas third party has to perform the steps 2,3,4 and 5.</p>
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=Encryption / Decryption with AWS KMS and OpenSSL&url=http://localhost:4000/encryption-decryption-with-kms-and-openssl/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/encryption-decryption-with-kms-and-openssl/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/encryption-decryption-with-kms-and-openssl/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+            <a href="/flexible-jekyll/tags#AWS" class="tag">&#35; AWS</a>
+          
+            <a href="/flexible-jekyll/tags#KMS" class="tag">&#35; KMS</a>
+          
+            <a href="/flexible-jekyll/tags#Encryption" class="tag">&#35; Encryption</a>
+          
+            <a href="/flexible-jekyll/tags#OpenSSL" class="tag">&#35; OpenSSL</a>
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//mr-brown.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

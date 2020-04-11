@@ -1,0 +1,37 @@
+title: Europa Tech Ltd
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+permalink: ':title/'
+baseurl: "/flexible-jekyll" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+site-twitter: #if your site has a twitter account, enter it here
+
+# Author Settings
+author: Kevin Eid # add your name
+company: Europa Tech Ltd
+author-img: kevineid.png # add your photo
+about-author: Europa Tech Ltd - Lean, flexible data analytics consulting. # add description
+social-twitter: KevinEID75# add your Twitter handle
+social-github: kevllino # add your Github handle
+social-linkedin: kevin-eid-b0168985 # add your Linkedin handle
+social-stack-exchange : 5387861/kevin-eid
+
+# Disqus
+discus-identifier: mr-brown # add your discus identifier
+
+# Tracker
+analytics: # Google Analytics
+
+# Build Settings
+markdown: kramdown
+plugins:
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jemoji
+
+paginate: 8
+paginate_path: "/page/:num"
+
+exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
