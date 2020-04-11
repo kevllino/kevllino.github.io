@@ -24,7 +24,7 @@
     <meta content="http://localhost:4000/about/" property="article:author">
   
   
-    <meta content="http://localhost:4000/flexible-jekyll/assets/img/kats-conf.png" property="og:image">
+    <meta content="http://localhost:4000/kevllino.github.io/assets/img/kats-conf.png" property="og:image">
   
   
     
@@ -52,17 +52,17 @@
     <meta name="twitter:description" content="This blog post was written to prepare my lightning talk for [Kats Conf](http://www.katsconf.com/) and exposes how to build flexible data pipelines by leveraging the AWS stack and the Serverless framework.">
   
   
-    <meta name="twitter:image:src" content="http://localhost:4000/flexible-jekyll/assets/img/kats-conf.png">
+    <meta name="twitter:image:src" content="http://localhost:4000/kevllino.github.io/assets/img/kats-conf.png">
   
 
 	<meta name="description" content="This blog post was written to prepare my lightning talk for [Kats Conf](http://www.katsconf.com/) and exposes how to build flexible data pipelines by leveraging the AWS stack and the Serverless framework.">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="">
-	<link rel="shortcut icon" href="/flexible-jekyll/assets/img/favicon/favicon.png" type="image/x-icon">
-	<link rel="apple-touch-icon" href="/flexible-jekyll/assets/img/favicon/favicon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/flexible-jekyll/assets/img/favicon/favicon.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="/flexible-jekyll/assets/img/favicon/favicon.png">
+	<link rel="shortcut icon" href="/kevllino.github.io/assets/img/favicon/favicon.png" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/kevllino.github.io/assets/img/favicon/favicon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/kevllino.github.io/assets/img/favicon/favicon.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/kevllino.github.io/assets/img/favicon/favicon.png">
 	<!-- Chrome, Firefox OS and Opera -->
 	<meta name="theme-color" content="#263959">
 	<!-- Windows Phone -->
@@ -73,9 +73,9 @@
 	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 	<!-- Font Awesome -->
-	<link rel="stylesheet" href="/flexible-jekyll/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/kevllino.github.io/assets/fonts/font-awesome/css/font-awesome.min.css">
 	<!-- Styles -->
-	<link rel="stylesheet" href="/flexible-jekyll/assets/css/main.css">
+	<link rel="stylesheet" href="/kevllino.github.io/assets/css/main.css">
 </head>
 
 <body>
@@ -85,10 +85,10 @@
   <header>
     <div class="about">
       <div class="cover-author-image">
-        <a href="/flexible-jekyll/"><img src="/flexible-jekyll/assets/img/kevineid.png" alt="Kevin Eid"></a>
+        <a href="/kevllino.github.io/"><img src="/kevllino.github.io/assets/img/kevineid.png" alt="Kevin Eid"></a>
       </div>
       <div class="author-name">Kevin Eid</div>
-      <p>Europa Tech Ltd - Lean, flexible data analytics consulting.</p>
+      <p>I'm Kevin Eid director and data engineer at Europa Tech Ltd where we provide you with flexible and lean data analytics consulting capabilities ranging from cloud migration to implementation of big data pipelines and machine learning models.</p>
     </div>
   </header> <!-- End Header -->
   <footer>
@@ -120,7 +120,7 @@
     
     <div class="page-cover-image">
       <figure>
-        <img class="page-image" src=/flexible-jekyll/assets/img/kats-conf.png alt="Reactive Data Pipelines">
+        <img class="page-image" src=/kevllino.github.io/assets/img/kats-conf.png alt="Reactive Data Pipelines">
         
       </figure>
     </div> <!-- End Page Cover Image -->
@@ -150,7 +150,7 @@
 
 <p>In this post, we only cover the non-grey component of the following infrastructure:</p>
 
-<p><img src="/flexible-jekyll/assets/img/kats2conf/pipeline_overview.png" alt="Overview of the pipeline" /></p>
+<p><img src="/kevllino.github.io/assets/img/kats2conf/pipeline_overview.png" alt="Overview of the pipeline" /></p>
 
 <p>In order to sessionize events, there were three main steps to execute:</p>
 
@@ -172,7 +172,7 @@
 
 <p>The following schema defines a generic Lambda which will retrieve data triggered by a Kinesis Stream and post it into a Firehose pipe which will deliver the data to the desired S3 bucket.</p>
 
-<p><img src="/flexible-jekyll/assets/img/kats2conf/generic_lambda.png" alt="Generic Lambda" /></p>
+<p><img src="/kevllino.github.io/assets/img/kats2conf/generic_lambda.png" alt="Generic Lambda" /></p>
 
 <h3 id="why-reactive">Why Reactive?</h3>
 
@@ -191,7 +191,7 @@
 
 <p>Now for those who are new to the Lambda service, if you start using it, you’ll end up having to code in the AWS console like this:</p>
 
-<p><img src="/flexible-jekyll/assets/img/kats2conf/lambda-console.png" alt="Lambda Console" /></p>
+<p><img src="/kevllino.github.io/assets/img/kats2conf/lambda-console.png" alt="Lambda Console" /></p>
 
 <p>“Ouch!” Yes there’s no code completion or error checking, and imagine yourself having to implement and maintain many Lambda functions. This is just not viable! Thus, <a href="https://serverless.com/">Serverless framework</a>, an open-source web framework written in Node.js was developed to support the development and deployment of applications using AWS lambda. This framework helps managing the lifecycle of your serverless architecture (build, deploy, update, delete) by safely deploying functions, events and their required resources together via provider resource managers (e.g., AWS CloudFormation). 
 Here are some useful commands to get started writing your own serverless services:</p>
@@ -202,7 +202,7 @@ npm <span class="nb">install </span>serverless <span class="nt">-g</span>
 <span class="c"># service creation </span>
 sls create <span class="nt">-t</span> aws-python <span class="nt">-p</span> ./data-service
 </code></pre></div></div>
-<p><img src="/flexible-jekyll/assets/img/kats2conf/serverless.png" alt="Serverless Service Creation" /></p>
+<p><img src="/kevllino.github.io/assets/img/kats2conf/serverless.png" alt="Serverless Service Creation" /></p>
 
 <p>Below are other command to allow you to deploy, update and test your functions:</p>
 
@@ -236,11 +236,11 @@ sls logs <span class="nt">-f</span> hello
         </div>
         <div class="page-tag">
           
-            <a href="/flexible-jekyll/tags#AWS" class="tag">&#35; AWS</a>
+            <a href="/kevllino.github.io/tags#AWS" class="tag">&#35; AWS</a>
           
-            <a href="/flexible-jekyll/tags#Conference" class="tag">&#35; Conference</a>
+            <a href="/kevllino.github.io/tags#Conference" class="tag">&#35; Conference</a>
           
-            <a href="/flexible-jekyll/tags#Reactive" class="tag">&#35; Reactive</a>
+            <a href="/kevllino.github.io/tags#Reactive" class="tag">&#35; Reactive</a>
           
         </div>
       </div>
