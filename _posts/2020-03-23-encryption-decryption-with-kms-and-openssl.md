@@ -86,3 +86,14 @@ You will have to use the algorithm sent by third party in step 5.
 DATA_plaintext -> final data in plaintext form
 
 Please note that, you have to perform the steps 1,6 and 7 whereas third party has to perform the steps 2,3,4 and 5.
+
+## Troubleshooting
+
+### Bad decrypt issue 
+
+If you run into the following [error](https://stackoverflow.com/questions/34304570/how-to-resolve-the-evp-decryptfinal-ex-bad-decrypt-during-file-decryption) while decrypting your files: `digital envelope routines: EVP_DecryptFInal_ex: bad decrypt`. 
+It could be due to one of the followings: 
+1. Your OpenSSL versions between OS are incompatible, i.e. if you encrypt on a machine that uses OpenSSL 1.1.1 and decrypt on one using 1.0.2, you'll get this error. 
+To solve it, you'll have to add the `-md sha256` to the decrypt command 7.
+1. Your encryption happens on Windows and decryption on Unix, to solve this, you'll need to run `dos2unix keyplaintext.bin` before decrypting your data files. 
+As this will convert your key to a UNIX like file. 
