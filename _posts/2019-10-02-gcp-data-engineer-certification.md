@@ -38,3 +38,5 @@ I chose Saturday morning - 11a.m. to pass the exam. One advice, is go there earl
 
 ## Conclusion
 I hope that the above will help you in passing that certification. A mix of practice, thorough study and good organisation should get you this certification. In the end, I’m very happy that I took it, I learnt a lot and I would have felt more comfortable on my day to day job with all of this knowledge.
+
+![Data Engineer Certification]({{site.baseurl}}/assets/img/gcp/data_engineer_certification.png)

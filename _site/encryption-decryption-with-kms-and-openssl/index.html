@@ -207,6 +207,19 @@ DATA_plaintext -&gt; final data in plaintext form</p>
 
 <p>Please note that, you have to perform the steps 1,6 and 7 whereas third party has to perform the steps 2,3,4 and 5.</p>
 
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="bad-decrypt-issue">Bad decrypt issue</h3>
+
+<p>If you run into the following <a href="https://stackoverflow.com/questions/34304570/how-to-resolve-the-evp-decryptfinal-ex-bad-decrypt-during-file-decryption">error</a> while decrypting your files: <code class="highlighter-rouge">digital envelope routines: EVP_DecryptFInal_ex: bad decrypt</code>. 
+It could be due to one of the followings:</p>
+<ol>
+  <li>Your OpenSSL versions between OS are incompatible, i.e. if you encrypt on a machine that uses OpenSSL 1.1.1 and decrypt on one using 1.0.2, you’ll get this error. 
+To solve it, you’ll have to add the <code class="highlighter-rouge">-md sha256</code> to the decrypt command 7.</li>
+  <li>Your encryption happens on Windows and decryption on Unix, to solve this, you’ll need to run <code class="highlighter-rouge">dos2unix keyplaintext.bin</code> before decrypting your data files. 
+As this will convert your key to a UNIX like file.</li>
+</ol>
+
       <div class="page-footer">
         <div class="page-share">
           <a href="https://twitter.com/intent/tweet?text=Encryption / Decryption with AWS KMS and OpenSSL&url=http://localhost:4000/encryption-decryption-with-kms-and-openssl/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>

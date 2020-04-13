@@ -22,4 +22,6 @@ need to study in-depth these topics
 
 ## Conclusion
 As with other exams, you only need to put the time and focus to be sure to succeed, take your time to study (if you need), but not too much, I usually book the exam date and then start preparing and this 
-makes it compulsory for me not to procrastinate. In the end, it's worth taking the certification as it'll give you a overview of what services Google offer, moreover you'll get some swags ;). 
+makes it compulsory for me not to procrastinate. In the end, it's worth taking the certification as it'll give you a overview of what services Google offer, moreover you'll get some swags ;).
+
+![Data Architect Certification]({{site.baseurl}}/assets/img/gcp/data_architect_certification.png)
