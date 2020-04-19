@@ -5,7 +5,9 @@ permalink: /tags/
 ---
 {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
 {% assign tag_words = site_tags | split:',' | sort %}
-
+<div class="welcome-header">
+  <h1><a href="../index.html" style="text-decoration:none">Blog</a> | <a href="index.html" style="text-decoration:none">Categories</a> | <a>Portfolio</a> | <a>About</a></h1>
+</div>
 <section class="blog-tags">
   <h1>Tags in Blog</h1>
   <ul class="tags">

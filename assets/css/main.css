@@ -1450,6 +1450,15 @@ a.newer-posts:hover {
   }
 }
 
+.welcome-header h1 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.welcome-header a {
+    color: grey;
+}
+
 /* Extra Small Devices, Phones */
 @media only screen and (max-width: 480px) {
   .content-box {
@@ -1478,3 +1487,5 @@ a.newer-posts:hover {
     font-size: 21px;
   }
 }
+
+
